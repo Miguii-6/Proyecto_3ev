@@ -2,12 +2,12 @@
 package View;
 
 import Model.*;
+import java.sql.Connection;
 import javax.swing.table.DefaultTableModel;
-
 
 public class Config_BBDD extends javax.swing.JFrame {
     
-    static Conexion connection = new Conexion();
+    Connection connection = Conexion.getConnection();  
     static Query query = new Query();
     static String tabla_default = "Preguntas nivel fácil";
     
@@ -22,7 +22,7 @@ public class Config_BBDD extends javax.swing.JFrame {
     public void mostrarDatos(String tabla){  
         
         // Array lleno con la respuesta de la query
-        String[][] data = query.SelectAllFromTable(connection.getConnection(), tabla);
+        String[][] data = query.SelectAllFromTable(Conexion.getConnection(), tabla);
         
         // Crear los nombres de las columnas
         String[] nombresColumnas = {"ID", "Pregunta", "Respuesta",
@@ -157,8 +157,8 @@ public class Config_BBDD extends javax.swing.JFrame {
     }//GEN-LAST:event_bAddActionPerformed
 
     private void bActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarActionPerformed
-        //Actualizar ac = new Actualizar();
-        //ac.show(); // Mostrar otro JFrame
+        Actualizar ac = new Actualizar();
+        ac.show(); // Mostrar otro JFrame
     }//GEN-LAST:event_bActualizarActionPerformed
     private void bBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBorrarActionPerformed
         Borrar br = new Borrar();

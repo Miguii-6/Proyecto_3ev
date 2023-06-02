@@ -2,11 +2,11 @@
 package View;
 
 import Model.*;
-import javax.swing.table.DefaultTableModel;
+import java.sql.Connection;
 
 public class Actualizar extends javax.swing.JFrame {
     
-    static Conexion connection = new Conexion();
+    Connection connection = Conexion.getConnection();        
     static Query query = new Query();
     
     public Actualizar() {
@@ -84,11 +84,6 @@ public class Actualizar extends javax.swing.JFrame {
         jComboBoxBBDD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Preguntas nivel fácil", "Preguntas nivel medio", "Preguntas nivel difícil" }));
 
         jTextFieldAviso.setEditable(false);
-        jTextFieldAviso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldAvisoActionPerformed(evt);
-            }
-        });
 
         jLabel15.setText("Pregunta:");
 
@@ -237,23 +232,25 @@ public class Actualizar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEnviarActionPerformed
-        jTextFieldAviso.setText(query.Delete_Query(connection.getConnection(),
+        jTextFieldAviso.setText(query.Update_Query(Conexion.getConnection(),
                 jTextFieldPregunta.getText(), 
                 jComboBoxRespuesta.getSelectedItem().toString(), 
                 jTextFieldOpcionA.getText(),
                 jTextFieldOpcionB.getText(), 
                 jTextFieldOpcionC.getText(), 
                 jTextFieldOpcionD.getText(),
-                jComboBoxBBDD.getSelectedItem().toString()));
+                jComboBoxBBDD.getSelectedItem().toString(),
+                jTextFieldPregunta2.getText(), 
+                jComboBoxRespuesta2.getSelectedItem().toString(), 
+                jTextFieldOpcionA2.getText(),
+                jTextFieldOpcionB2.getText(), 
+                jTextFieldOpcionC2.getText(), 
+                jTextFieldOpcionD2.getText()));
     }//GEN-LAST:event_bEnviarActionPerformed
 
     private void bAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAtrasActionPerformed
         dispose();
     }//GEN-LAST:event_bAtrasActionPerformed
-
-    private void jTextFieldAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAvisoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldAvisoActionPerformed
 
     public static void main(String args[]) {
        java.awt.EventQueue.invokeLater(new Runnable() {

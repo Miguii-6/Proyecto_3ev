@@ -1,36 +1,32 @@
-
 package Model;
 
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class Conexion {
+    private static String URL = "jdbc:mysql://localhost:3306/preguntas";
+    private static String USER = "root";
+    private static String PASS = "";
     
-    static String URL = "jdbc:mysql://localhost:3306/preguntas";
-    static String USER = "root";
-    static String PASS = "";  
-    static String QUERY = "";
+    // Variable estática para almacenar la única instancia
+    private static Connection connection; 
     
-    Connection connection;
-        
-    public Connection getConnection(){
-        
-        try{
-        
-            // Driver especifico para MySQL
-            Class.forName("com.mysql.cj.jdbc.Driver");  
-
-            // Iniciar conexion con BBDD
-            connection = DriverManager.getConnection(URL,USER,PASS);      
-            
-            System.out.println("Se ha establecido la conexión.");
-        
-        }catch(Exception e){             
-            System.out.println("No se ha podido establecer conexion con la base de datos.\n"
-                    + "ERROR: "+e);        
+    private Conexion() {} // Constructor privado
+    
+    /**
+     * Metodo que cuando es llamado abre una conexión con la bbdd
+     * @return Connection
+     */
+    public static Connection getConnection() {
+        if (connection == null) {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver"); // Driver específico para MySQL
+                connection = DriverManager.getConnection(URL, USER, PASS);
+                System.out.println("Se ha establecido la conexión.");
+            } catch (Exception e) {
+                System.out.println("No se ha podido establecer conexión con la base de datos.\nERROR: " + e);
+            }
         }
-        
         return connection;
     }
-     
 }

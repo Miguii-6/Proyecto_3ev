@@ -2,11 +2,12 @@
 package View;
 
 import Model.*;
+import java.sql.Connection;
 import javax.swing.table.DefaultTableModel;
 
 public class Buscar extends javax.swing.JFrame {
     
-    static Conexion connection = new Conexion();
+    Connection connection = Conexion.getConnection();  
     static Query query = new Query();
     
     public Buscar() {
@@ -17,7 +18,7 @@ public class Buscar extends javax.swing.JFrame {
     public void mostrarDatos(){  
         
         // Array lleno con la respuesta de la query
-        String[][] data = query.Select_Query(connection.getConnection(), 
+        String[][] data = query.Select_Query(Conexion.getConnection(), 
                 jTextFieldID.getText(), 
                 jTextFieldPregunta.getText(), 
                 jComboBoxRespuesta.getSelectedItem().toString(), 

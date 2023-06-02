@@ -10,6 +10,12 @@ public class Query {
     static String Query;
     
     
+    /**
+     * Método que dada una conexión y una tabla de la BBDD devuelve todas sus entradas
+     * @param connection
+     * @param tabla
+     * @return array bidimensional con los resultados de la query
+     */
     public String[][] SelectAllFromTable(Connection connection, String tabla){
             
             // Construimos la query que se va a lanzar a la BBDD
@@ -52,9 +58,8 @@ public class Query {
                     }
                     fila++;                
                 }
-
-                // Cerramos conexión
-                connection.close();   
+                
+                resultSet.close();
 
                 return preguntas;
 
@@ -66,6 +71,19 @@ public class Query {
         
     }
     
+    /**
+     * Método que dados unos parámetros busca una entrada correspondiente en la BBDD
+     * @param connection Conexion a la BBDD
+     * @param ID parámetro de la BBDD
+     * @param Pregunta parámetro de la BBDD
+     * @param Respuesta parámetro de la BBDD
+     * @param OpcionA parámetro de la BBDD
+     * @param OpcionB parámetro de la BBDD
+     * @param OpcionC parámetro de la BBDD
+     * @param OpcionD parámetro de la BBDD
+     * @param tabla tabla en la que se ejecutará la query
+     * @return array bidimensional con los resultados de la query
+     */
     public String[][] Select_Query(Connection connection, String ID, String Pregunta, String Respuesta, 
             String OpcionA, String OpcionB, String OpcionC, String OpcionD, String tabla){
         
@@ -170,9 +188,8 @@ public class Query {
                 fila++;                
             }
             
-            // Cerramos conexión
-            connection.close();   
-            
+            resultSet.close();
+                        
             return resultados;
             
         }catch(Exception e){ 
@@ -183,6 +200,18 @@ public class Query {
         
     }
     
+    /**
+     * 
+     * @param connection
+     * @param Pregunta
+     * @param Respuesta
+     * @param OpcionA
+     * @param OpcionB
+     * @param OpcionC
+     * @param OpcionD
+     * @param tabla
+     * @return 
+     */
     public String[][] Insert_Query(Connection connection, String Pregunta, String Respuesta, 
             String OpcionA, String OpcionB, String OpcionC, String OpcionD, String tabla){
     
@@ -208,10 +237,7 @@ public class Query {
             
             String ID = null;
             String[][] resultados = Select_Query(connection, ID, Pregunta, Respuesta, OpcionA, OpcionB, OpcionC, OpcionD, tabla);
-            
-            // Cerramos conexión
-            connection.close();
-            
+                        
             return resultados;
             
         }catch(Exception e){ 
@@ -222,8 +248,23 @@ public class Query {
         
     }
     
+    /**
+     * Método que dados los datos de una entrada en la BBDD
+     * hace una consulta DELETE para borrarlos
+     * @param connection Conexion a la BBDD
+     * @param Pregunta parámetro de la BBDD
+     * @param Respuesta parámetro de la BBDD
+     * @param OpcionA parámetro de la BBDD
+     * @param OpcionB parámetro de la BBDD
+     * @param OpcionC parámetro de la BBDD
+     * @param OpcionD parámetro de la BBDD
+     * @param tabla tabla en la que se ejecutarán los cambios
+     * @return mensaje
+     */
     public String Delete_Query(Connection connection, String Pregunta, String Respuesta, 
             String OpcionA, String OpcionB, String OpcionC, String OpcionD, String tabla){
+        
+        String mensaje = null;
         
         //Seleccionamos la tabla en la que haremos la query.
         switch (tabla) {
@@ -247,33 +288,48 @@ public class Query {
 
             // Ejecuta la consulta
             int filasAfectadas = statement.executeUpdate(Query);
-
-            String resultado;
             
             // Dependiendo de las filas que se borren envia un mensaje o no
             if (filasAfectadas > 0) {
-                resultado = ("Se han eliminado " + filasAfectadas + " filas.");
+                mensaje = ("Se han eliminado " + filasAfectadas + " filas.");
             } else {
-                resultado = "No se ha eliminado ninguna fila.";
+                mensaje = "No se ha eliminado ninguna fila.";
             }
-            
-            // Cerramos conexión
-            connection.close();
-            
-            return resultado;
             
         }catch(Exception e){ 
             System.out.println("ERROR: "+e);
         }
         
-        return null;
+        return mensaje;
         
     }
-        
-    public void Update_Query(Connection connection, String Pregunta, String Respuesta, 
+    
+    /**
+     * Método que dados los datos de una entrada en la BBDD y a los que se desea actualizar
+     * hace una consulta de UPDATE a la BBDD       
+     * 
+     * @param connection Conexion a la BBDD
+     * @param Pregunta parámetro de la entrada original
+     * @param Respuesta parámetro de la entrada original
+     * @param OpcionA parámetro de la entrada original
+     * @param OpcionB parámetro de la entrada original
+     * @param OpcionC parámetro de la entrada original
+     * @param OpcionD parámetro de la entrada original
+     * @param tabla tabla en la que se ejecutarán los cambios
+     * @param Pregunta2 parámetro actualizado
+     * @param Respuesta2 parámetro actualizado
+     * @param OpcionA2 parámetro actualizado
+     * @param OpcionB2 parámetro actualizado
+     * @param OpcionC2 parámetro actualizado
+     * @param OpcionD2 parámetro actualizado 
+     * @return mensaje 
+     */
+    public String Update_Query(Connection connection, String Pregunta, String Respuesta, 
             String OpcionA, String OpcionB, String OpcionC, String OpcionD, String tabla, 
             String Pregunta2, String Respuesta2, String OpcionA2, String OpcionB2, String OpcionC2, String OpcionD2){
     
+        String mensaje = null;
+        
         //Seleccionamos la tabla en la que haremos la query.
         switch (tabla) {
             case "Preguntas nivel fácil":
@@ -287,19 +343,42 @@ public class Query {
                 break;
         }
         
-        Query = "";
+        // Creamos la consulta de actualización
+        Query = "UPDATE " + tabla + " SET " +
+                "Pregunta = '" + Pregunta2 + "', " +
+                "Respuesta = '" + Respuesta2 + "', " +
+                "OpcionA = '" + OpcionA2 + "', " +
+                "OpcionB = '" + OpcionB2 + "', " +
+                "OpcionC = '" + OpcionC2 + "', " +
+                "OpcionD = '" + OpcionD2 + "' " +
+                "WHERE " +
+                "Pregunta = '" + Pregunta + "' AND " +
+                "Respuesta = '" + Respuesta + "' AND " +
+                "OpcionA = '" + OpcionA + "' AND " +
+                "OpcionB = '" + OpcionB + "' AND " +
+                "OpcionC = '" + OpcionC + "' AND " +
+                "OpcionD = '" + OpcionD + "'";
                 
         try{       
-            // Realiza la inserción en la base de datos
-            //Statement statement = connection.executeUpdate(Query);
-            // Cerramos conexión
-            connection.close();
-                        
+            // Ejecutar la consulta de actualización
+            Statement statement = connection.createStatement();
+
+            // Ejecuta la consulta
+            int filasAfectadas = statement.executeUpdate(Query);
+            
+            // Dependiendo de las filas que se actualicen envia un mensaje o no
+            if (filasAfectadas > 0) {
+                mensaje = ("Se han actualizado con éxito.");
+            } else {
+                mensaje = "No se han hecho cambios.";
+            }
+                                    
         }catch(Exception e){ 
             System.out.println("ERROR: "+e);
         }
         
-    }
-    
+        return mensaje;
         
+    }
+               
 }

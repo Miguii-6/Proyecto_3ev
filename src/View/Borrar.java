@@ -2,11 +2,11 @@
 package View;
 
 import Model.*;
-import javax.swing.table.DefaultTableModel;
+import java.sql.Connection;
 
 public class Borrar extends javax.swing.JFrame {
     
-    static Conexion connection = new Conexion();
+    Connection connection = Conexion.getConnection();
     static Query query = new Query();
     
     public Borrar() {
@@ -71,11 +71,6 @@ public class Borrar extends javax.swing.JFrame {
         jComboBoxBBDD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Preguntas nivel fácil", "Preguntas nivel medio", "Preguntas nivel difícil" }));
 
         jTextFieldAviso.setEditable(false);
-        jTextFieldAviso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldAvisoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,7 +156,7 @@ public class Borrar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEnviarActionPerformed
-        jTextFieldAviso.setText(query.Delete_Query(connection.getConnection(),
+        jTextFieldAviso.setText(query.Delete_Query(Conexion.getConnection(),
                 jTextFieldPregunta.getText(), 
                 jComboBoxRespuesta.getSelectedItem().toString(), 
                 jTextFieldOpcionA.getText(),
@@ -174,10 +169,6 @@ public class Borrar extends javax.swing.JFrame {
     private void bAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAtrasActionPerformed
         dispose();
     }//GEN-LAST:event_bAtrasActionPerformed
-
-    private void jTextFieldAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAvisoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldAvisoActionPerformed
 
     public static void main(String args[]) {
        java.awt.EventQueue.invokeLater(new Runnable() {

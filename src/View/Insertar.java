@@ -2,11 +2,12 @@
 package View;
 
 import Model.*;
+import java.sql.Connection;
 import javax.swing.table.DefaultTableModel;
 
 public class Insertar extends javax.swing.JFrame {
     
-    static Conexion connection = new Conexion();
+    Connection connection = Conexion.getConnection(); 
     static Query query = new Query();
     
     public Insertar() {
@@ -17,7 +18,7 @@ public class Insertar extends javax.swing.JFrame {
     public void mostrarDatos(){  
         
         // Array lleno con la respuesta de la query
-        String[][] data = query.Insert_Query(connection.getConnection(), 
+        String[][] data = query.Insert_Query(Conexion.getConnection(), 
                 jTextFieldPregunta.getText(), 
                 jComboBoxRespuesta.getSelectedItem().toString(), 
                 jTextFieldOpcionA.getText(),
