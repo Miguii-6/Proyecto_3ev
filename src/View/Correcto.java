@@ -1,5 +1,6 @@
 
-package InterfaceGrafica;
+
+package View;
 
 public class Correcto extends javax.swing.JFrame {
 

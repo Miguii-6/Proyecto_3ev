@@ -1,4 +1,5 @@
-package InterfaceGrafica;
+
+package View;
 
 public class Inicio extends javax.swing.JFrame {
 
