@@ -1,4 +1,5 @@
 
+
 package View;
 
 public class Incorrecto extends javax.swing.JFrame {
@@ -87,3 +88,4 @@ public class Incorrecto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
+
