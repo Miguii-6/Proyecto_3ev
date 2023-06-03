@@ -1,5 +1,4 @@
 
-
 package View;
 
 public class Correcto extends javax.swing.JFrame {
@@ -43,12 +42,15 @@ public class Correcto extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 560));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         Pregunta pre= new Pregunta();
-        pre.setVisible(true);
+        pre.show();
+        
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
   
