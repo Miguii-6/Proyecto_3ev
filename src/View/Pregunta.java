@@ -1,4 +1,3 @@
-
 package View;
 
 import com.proyecto.preguntas.Preguntas;
@@ -43,11 +42,11 @@ public class Pregunta extends javax.swing.JFrame {
             
              if (array_local[x].getRespuesta().equals(respuesta)){
                 Correcto cor = new Correcto();
-                cor.setVisible(true);
+                cor.show();
                  
              }else{
                  Incorrecto inc = new Incorrecto();
-                 inc.setVisible(true);
+                 inc.show();
          }
       
         }
@@ -157,31 +156,35 @@ public class Pregunta extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void OpcionAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionAActionPerformed
         
         respuesta = "A";
         comprobar(respuesta,x);
-        
+        dispose();
     }//GEN-LAST:event_OpcionAActionPerformed
 
     private void OpcionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionBActionPerformed
         
         respuesta = "B";
         comprobar(respuesta,x);
+        dispose();
     }//GEN-LAST:event_OpcionBActionPerformed
 
     private void OpcionCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionCActionPerformed
         
         respuesta = "C";
         comprobar(respuesta,x);
+        dispose();
     }//GEN-LAST:event_OpcionCActionPerformed
 
     private void OpcionDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionDActionPerformed
         
         respuesta = "D";
         comprobar(respuesta,x);
+        dispose();
     }//GEN-LAST:event_OpcionDActionPerformed
 
    
