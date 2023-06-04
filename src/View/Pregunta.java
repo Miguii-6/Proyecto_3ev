@@ -12,16 +12,19 @@ public class Pregunta extends javax.swing.JFrame {
     static Query query = new Query();
     static Logica logica = new Logica();
     
+    static String[] pregunta = null;
+    static String RespuestaUser = null;
+    
     public Pregunta() {        
         initComponents();
         mostrarTexto(); 
     }
     
-    private void mostrarTexto(){
+    private String[] mostrarTexto(){
         
         String tabla = dificultade.getTabla();
         
-        String[] pregunta = logica.preguntaRandom(Conexion.getConnection(), tabla);        
+        pregunta = logica.preguntaRandom(Conexion.getConnection(), tabla);        
         
         // Mostramos el contenido del array en su correspondiente sitio
         Pregunta.setText(pregunta[1]);
@@ -30,7 +33,22 @@ public class Pregunta extends javax.swing.JFrame {
         OpcionC.setText(pregunta[5]);
         OpcionD.setText(pregunta[6]);
         
+        return pregunta;
+        
     }
+    
+    private void comprobar(){    
+        if (RespuestaUser.equals(pregunta[2])){
+            Correcto correcto = new Correcto();
+            correcto.show();
+        }else{
+            Incorrecto incorrecto = new Incorrecto();
+            incorrecto.show();
+        } 
+        
+        setVisible(false);
+    }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -113,19 +131,23 @@ public class Pregunta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OpcionAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionAActionPerformed
-        
+        RespuestaUser = "A";
+        comprobar();
     }//GEN-LAST:event_OpcionAActionPerformed
 
     private void OpcionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionBActionPerformed
-        
+        RespuestaUser = "B";
+        comprobar();
     }//GEN-LAST:event_OpcionBActionPerformed
 
     private void OpcionCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionCActionPerformed
-        
+        RespuestaUser = "C";
+        comprobar();
     }//GEN-LAST:event_OpcionCActionPerformed
 
     private void OpcionDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionDActionPerformed
-        
+        RespuestaUser = "D";
+        comprobar();
     }//GEN-LAST:event_OpcionDActionPerformed
 
     
