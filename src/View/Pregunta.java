@@ -128,6 +128,7 @@ public class Pregunta extends javax.swing.JFrame {
         
     }//GEN-LAST:event_OpcionDActionPerformed
 
+    
     public static void main(String args[]) {
         
         try {
