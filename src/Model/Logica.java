@@ -11,7 +11,7 @@ public class Logica {
     Connection connection = Conexion.getConnection();   
     
     static Query query = new Query();
-            
+
     private final ArrayList<Integer>numsUsados = new ArrayList<>();
     
     /**
@@ -21,11 +21,11 @@ public class Logica {
      */
     public int numero_random(int bound){
         
-        int numRandom;    
+        int numRandom;
         
         // Genera numeros aleatorios hasta no haya ninguno que coincida con los del array
         do{
-                        
+          
             // Numero aleatorio entre -1 y @bound
             numRandom = ThreadLocalRandom.current().nextInt(bound);
             
@@ -58,5 +58,5 @@ public class Logica {
         return pregunta;
         
     }
-        
+    
 }

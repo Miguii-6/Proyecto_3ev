@@ -31,7 +31,6 @@ public class Pregunta extends javax.swing.JFrame {
         OpcionD.setText(pregunta[5]);
         
     }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -113,19 +112,15 @@ public class Pregunta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OpcionAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionAActionPerformed
-        
     }//GEN-LAST:event_OpcionAActionPerformed
 
     private void OpcionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionBActionPerformed
-        
     }//GEN-LAST:event_OpcionBActionPerformed
 
     private void OpcionCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionCActionPerformed
-        
     }//GEN-LAST:event_OpcionCActionPerformed
 
     private void OpcionDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionDActionPerformed
-        
     }//GEN-LAST:event_OpcionDActionPerformed
 
     public static void main(String args[]) {

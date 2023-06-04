@@ -1,7 +1,6 @@
 
 package View;
 
-
 public class Inicio extends javax.swing.JFrame {
 
     public Inicio() {
@@ -75,6 +74,7 @@ public class Inicio extends javax.swing.JFrame {
     private void bAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAjustesActionPerformed
         Config_BBDD config_BBDD = new Config_BBDD();
         config_BBDD.show();      
+
     }//GEN-LAST:event_bAjustesActionPerformed
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
