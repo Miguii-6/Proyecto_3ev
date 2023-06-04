@@ -7,6 +7,9 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 public class CFacil {
+    /**
+     * Metodo para acceder a base de datos de preguntas dificiles ao seleccionar a dificultade
+     */
     public void preguntasFaciles(){
         
         try {

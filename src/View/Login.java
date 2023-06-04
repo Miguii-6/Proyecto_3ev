@@ -111,14 +111,14 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //boton para validar o usuario
     private void bIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bIngresarActionPerformed
        //aqui chamamos ao objetoLogin para validar o usario
         Model.CLogin objetoLogin = new Model.CLogin();
        objetoLogin.validaUsuario(tfUsuario, pfPassword);
        dispose();
     }//GEN-LAST:event_bIngresarActionPerformed
-
+    //boton para sair ao Inicio
     private void bSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSairActionPerformed
         Inicio in = new Inicio();
         in.show();

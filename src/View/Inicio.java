@@ -1,5 +1,7 @@
 
+
 package View;
+
 
 public class Inicio extends javax.swing.JFrame {
 
@@ -64,19 +66,19 @@ public class Inicio extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+       //Boton para empezar onde nos leva a ventana de seleccionar a dificultade
     private void bStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStartActionPerformed
         Dificultade x = new Dificultade();
         x.show();
         
         dispose();        
     }//GEN-LAST:event_bStartActionPerformed
-
+    //boton de ajustes para usar o menu de entrada de preguntas
     private void bAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAjustesActionPerformed
         Config_BBDD config_BBDD = new Config_BBDD();
         config_BBDD.show();      
-
     }//GEN-LAST:event_bAjustesActionPerformed
-
+    //boton para acceder ao menu de inicio de sesión
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
         Login lg = new Login();
         lg.show();

@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 public class CMedia {
+    
+    /**
+     * Metodo para acceder a base de datos de preguntas medias ao seleccionar a dificultade
+     */
     public void preguntasMedias(){
         
         try {
