@@ -10,18 +10,29 @@ import javax.swing.JTextField;
 
 
 public class CLogin {
-    private List<Observador> observadores = new ArrayList<>();
+    private List<Observador> obs = new ArrayList<>();
     
+    /**
+    * Metodo para agregar o observdor da interface
+    */
     public void agregarObservador(Observador observador) {
-        observadores.add(observador);
+        obs.add(observador);
     }
-
-    private void notificarObservadores() {
-        for (Observador observador : observadores) {
+    
+    /**
+     * Metodo para notificar ao observer e que se actualice
+     */
+    private void notificarObs() {
+        for (Observador observador : obs) {
             observador.actualizar();
         }
     }
     
+    /**
+     * Metodo para validar o usuario ao iniciar sesión
+     * @param tfUsuario
+     * @param pfPassword 
+     */
     public void validaUsuario(JTextField tfUsuario, JPasswordField pfPassword){
     
         try {
