@@ -29,6 +29,9 @@ public class Query {
                 case "Preguntas nivel difícil":
                     Query = "SELECT * FROM PREGUNTAS_D";                      
                     break;
+                default:
+                    Query = "SELECT * FROM "+tabla;   
+                    break;
             }
             
             try{  
@@ -166,6 +169,7 @@ public class Query {
                 statement.setString(parametroIndex, OpcionD);
                 parametroIndex++;
             }
+            
             // ResultSet nos permite recoger el resultado de nuestra consulta
             ResultSet resultSet = statement.executeQuery();
             
@@ -380,5 +384,6 @@ public class Query {
         return mensaje;
         
     }
-               
+        
+    
 }
