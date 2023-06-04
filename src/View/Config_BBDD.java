@@ -7,7 +7,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class Config_BBDD extends javax.swing.JFrame {
     
-    Connection connection = Conexion.getConnection();  
+    Connection connection = Conexion.getConnection();     
+    
     static Query query = new Query();
     static String tabla_default = "Preguntas nivel fácil";
     
@@ -46,7 +47,7 @@ public class Config_BBDD extends javax.swing.JFrame {
         jComboBox = new javax.swing.JComboBox<>();
         bRefrescar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

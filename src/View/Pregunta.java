@@ -1,84 +1,36 @@
+
 package View;
 
-import com.proyecto.preguntas.Preguntas;
-import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
+import Model.*;
+import java.sql.*;
 
 public class Pregunta extends javax.swing.JFrame {
-
-  private final ArrayList<Integer>Usados = new ArrayList<>();
     
-    // Arrays con las preguntas, respuesta y opciones
-    private final com.proyecto.preguntas.Pregunta[] array_local = Preguntas.crear_Array_preguntas();   
+    Connection connection = Conexion.getConnection(); 
     
+    static Dificultade dificultade = new Dificultade();
+    static Query query = new Query();
+    static Logica logica = new Logica();
     
-    private String respuesta;
-    
-    private int x;
-    
-    
-    public Pregunta() {
-        
+    public Pregunta() {        
         initComponents();
-        
-        
-        
-        Inicio in=new Inicio();
-        in.dispose();
-        
-         x = numero_random(46);
-        Pregunta.setText(array_local[x].getPregunta());
-        
-        OpcionA.setText(array_local[x].getOpcionA());
-        OpcionB.setText(array_local[x].getOpcionB());
-        OpcionC.setText(array_local[x].getOpcionC());
-        OpcionD.setText(array_local[x].getOpcionD());
-        
+        mostrarTexto(); 
     }
     
-        private void comprobar(String respuesta, int x){
-            
-            
-            
-             if (array_local[x].getRespuesta().equals(respuesta)){
-                Correcto cor = new Correcto();
-                cor.show();
-                 
-             }else{
-                 Incorrecto inc = new Incorrecto();
-                 inc.show();
-         }
-      
-        }
-         public int numero_random(int z){
+    private void mostrarTexto(){
         
-        int num;
+        String tabla = dificultade.getTabla();
         
-        int y;
+        String[] pregunta = logica.preguntaRandom(Conexion.getConnection(), tabla);        
         
-        do{
-            
-            y = 1;
-            
-            // Numero aleatorio entre 0 y x
-            num = ThreadLocalRandom.current().nextInt(0, z);
-                        
-            for(Integer i: Usados){
-                if (i == num) {
-                    y = 0;
-                }
-            }
-            
-        }while(y<1);
-        
-        // Añadirlo al ArrayList de numeros que ya se han usado
-        Usados.add(num);
-        
-        return num;
+        // Mostramos el contenido del array en su correspondiente sitio
+        Pregunta.setText(pregunta[1]);
+        OpcionA.setText(pregunta[2]);
+        OpcionB.setText(pregunta[3]);
+        OpcionC.setText(pregunta[4]);
+        OpcionD.setText(pregunta[5]);
         
     }
-    
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -160,34 +112,17 @@ public class Pregunta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OpcionAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionAActionPerformed
-        
-        respuesta = "A";
-        comprobar(respuesta,x);
-        dispose();
     }//GEN-LAST:event_OpcionAActionPerformed
 
     private void OpcionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionBActionPerformed
-        
-        respuesta = "B";
-        comprobar(respuesta,x);
-        dispose();
     }//GEN-LAST:event_OpcionBActionPerformed
 
     private void OpcionCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionCActionPerformed
-        
-        respuesta = "C";
-        comprobar(respuesta,x);
-        dispose();
     }//GEN-LAST:event_OpcionCActionPerformed
 
     private void OpcionDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionDActionPerformed
-        
-        respuesta = "D";
-        comprobar(respuesta,x);
-        dispose();
     }//GEN-LAST:event_OpcionDActionPerformed
 
-   
     public static void main(String args[]) {
         
         try {

@@ -1,3 +1,4 @@
+
 package View;
 
 public class Inicio extends javax.swing.JFrame {
@@ -64,25 +65,23 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStartActionPerformed
-        
         Dificultade x = new Dificultade();
         x.show();
         
-        dispose();
+        dispose();        
     }//GEN-LAST:event_bStartActionPerformed
 
     private void bAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAjustesActionPerformed
-        // TODO add your handling code here:
+        Config_BBDD config_BBDD = new Config_BBDD();
+        config_BBDD.show();      
+
     }//GEN-LAST:event_bAjustesActionPerformed
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
         Login lg = new Login();
         lg.show();
-        
-        
     }//GEN-LAST:event_bLoginActionPerformed
 
-    
     public static void main(String args[]) {
         
         try {
