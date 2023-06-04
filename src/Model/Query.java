@@ -166,6 +166,7 @@ public class Query {
                 statement.setString(parametroIndex, OpcionD);
                 parametroIndex++;
             }
+            
             // ResultSet nos permite recoger el resultado de nuestra consulta
             ResultSet resultSet = statement.executeQuery();
             
@@ -380,5 +381,44 @@ public class Query {
         return mensaje;
         
     }
-               
+    
+    /**
+     * 
+     */
+    public String[] Select_Pregunta(Connection connection, int ID, String tabla){
+        
+        
+        // Construimos nuestra query parametrizada
+        Query = "SELECT * FROM "+tabla+" WHERE ID = '"+ID+"'";        
+        
+        try{      
+            
+            // Statement permite mandar consultas SQL a la BBDD
+            Statement statement = connection.createStatement();
+            // ResultSet nos permite recoger el resultado de nuestra consulta
+            ResultSet resultSet = statement.executeQuery(Query);
+            
+            // Crear el array bidimensional para llenar con los resultados
+            String[] resultado = new String[6];
+        
+            if (resultSet.next()) {
+                resultado[0] = resultSet.getString(1); // Pregunta
+                resultado[1] = resultSet.getString(2); // Respuesta
+                resultado[2] = resultSet.getString(3); // Opcion A
+                resultado[3] = resultSet.getString(4); // Opcion B
+                resultado[4] = resultSet.getString(5); // Opcion C
+                resultado[5] = resultSet.getString(6); // Opcion B
+            }
+            
+            resultSet.close();
+            
+            return resultado;
+            
+        }catch(Exception e){ 
+            System.out.println("ERROR: "+e);
+        }
+        
+        return null;
+        
+    }
 }
