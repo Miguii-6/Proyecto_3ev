@@ -87,20 +87,21 @@ classDiagram
         
     }
     class Buscar {
-        
+        + mostrarDatos(): void
     }
     class Insertar {
-        
+        + mostrarDatos(): void
     }
     class Config_BBDD {
-        
+        + mostrarDatos(String tabla): void
     }
     
     class Inicio {
         
     }
     class Dificultade {
-        
+        + setTabla(String tabla): void
+        + getTabla(): String
     }
     
     class Pregunta {
@@ -125,7 +126,7 @@ classDiagram
     Inicio --> Login
     Inicio --> Config_BBDD
     Dificultade --> CDificil
-    Dificulrade --> CMedia
+    Dificultade --> CMedia
     Dificultade --> CFacil
     CDificil --> Pregunta
     CMedia --> Pregunta
