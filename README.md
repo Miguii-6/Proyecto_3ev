@@ -79,14 +79,58 @@ classDiagram
         + SelectAllFromTable(connection: Connection, tabla: String): String[][]
         + Select_Query(connection: Connection, ID: String, Pregunta: String, Respuesta: String, OpcionA: String, OpcionB: String, OpcionC: String, OpcionD: String, tabla: String): String[][]
     }
+    
+    class Actualizar {
+        
+    }
+    class Borrar {
+        
+    }
+    class Buscar {
+        
+    }
+    class Insertar {
+        
+    }
+    class Config_BBDD {
+        
+    }
+    
+    class Inicio {
+        
+    }
+    class Dificultade {
+        
+    }
+    
+    class Pregunta {
+        + mostrarTexto(): void
+        + comprobar(): void
+    }
+    class Correcto {
+        
+    }
+    class Incorrecto {
+        
+    }
+    
+    class Login{
+        
+    }
 
     Main --> Inicio
     Main "1" --> "*" CConexion
     Main --> "1" CLogin
+    Inicio --> Dificultade
+    Inicio --> Login
+    Inicio --> Config_BBDD
+    Dificultade --> CDificil
+    Dificulrade --> CMedia
+    Dificultade --> CFacil
+    CDificil --> Pregunta
+    CMedia --> Pregunta
+    CFacil --> Pregunta
     CConexion --> "1" Conexion
-    CDificil --> CConexion
-    CMedia --> CConexion
-    CFacil --> CConexion
     CLogin --> "1" CConexion
     CLogin --> "1" ObsLogin
     CLogin --> "*" Observador
@@ -94,11 +138,28 @@ classDiagram
     CLogin --> "1" JPasswordField
     Conexion --> "1" Connection
     Logica --> Conexion
-    Logica --> "1" Query
+    Query --> "1" Logica
     ObsLogin --> "1" Login
     Observador <|-- ObsLogin
     Query --> Conexion
+    Query --> Dificultade
+    Query --> Pregunta
+    Query --> Config_BBDD
+    Query --> Actualirzar
+    Query --> Borrar
+    Query --> Buscar
+    Query --> Insertar
+    Config_BBDD --> Actualizar
+    Config_BBDD --> Borrar
+    Config_BBDD --> Buscar  
+    Config_BBDD --> Insertar
+    Pregunta --> Correcto
+    Pregunta --> Incorrecto
 ```
+
+Este es el Diagrama de clases de este proyecto en especifico. 
+La clase Query hace como libreria para despues instaciar los metodos en las otras clases. 
+Y la clase Conexión es un Singleton.
 
 ### Diagrama de secuencias
 
@@ -165,3 +226,5 @@ sequenceDiagram
     
     ObsLogin->>+JOptionPane: showMessageDialog(null, "Se ha validado el usuario correctamente")
 ```
+
+Este es el Diagrama de secuencia de este proyecto en especifico.
